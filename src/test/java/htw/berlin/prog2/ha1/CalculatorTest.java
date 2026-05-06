@@ -117,5 +117,24 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("Should only clear screen but keep stored value after first clear")
+    void testSingleClearKeepsStoredValue(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressClearKey();
+
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "11";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
